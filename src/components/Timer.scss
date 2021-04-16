@@ -1,0 +1,19 @@
+.timer {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  &__time {
+    margin-bottom: 1rem;
+  }
+
+  &__button {
+    outline: none;
+    border: 1px solid #eee;
+    background: rgb(226, 26, 26);
+    color: #fff;
+    padding: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+}
