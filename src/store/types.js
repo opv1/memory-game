@@ -1,3 +1,7 @@
+export const SET_BEGIN_GAME = 'SET_BEGIN_GAME'
+export const SET_END_GAME = 'SET_END_GAME'
+export const SET_MESSAGE = 'SET_MESSAGE'
+export const SET_TIMER = 'SET_TIMER'
 export const SET_DISPLAYED_CARDS = 'SET_DISPLAYED_CARDS'
 export const SET_FLIPED_CARDS = 'SET_FLIPED_CARDS'
 export const SET_TEMP_CARDS = 'SET_TEMP_CARDS'

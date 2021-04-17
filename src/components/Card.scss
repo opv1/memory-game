@@ -1,39 +1,26 @@
 .card {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #eee;
+  border-radius: 5px;
   width: 150px;
   height: 250px;
   transform: perspective(1000px) rotateY(0);
   transform-style: preserve-3d;
-  cursor: pointer;
-  border-radius: 5px;
-  border: 2px solid #eee;
   transition: 150ms;
+  cursor: pointer;
   user-select: none;
 
-  &__front,
-  &__back {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    backface-visibility: hidden;
-  }
-
   &__front {
-    background: rgb(151, 40, 40);
     color: #fff;
+    background: rgb(151, 40, 40);
   }
 
   &__back {
-    transform: rotateY(180deg);
     background: rgb(40, 151, 55);
+    transform: rotateY(180deg);
 
     i {
       font-size: 5rem;
@@ -42,5 +29,18 @@
 
   &_flip {
     transform: rotateY(180deg);
+  }
+
+  &__front,
+  &__back {
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
   }
 }

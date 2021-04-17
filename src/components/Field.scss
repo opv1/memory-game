@@ -1,14 +1,14 @@
 .field {
   display: flex;
-  align-items: center;
   flex-direction: column;
-  width: 90%;
+  align-items: center;
   margin: 1rem 0;
+  width: 90%;
 
   &__block {
-    margin-top: 1rem;
     display: flex;
-    justify-content: space-between;
     flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 1rem;
   }
 }

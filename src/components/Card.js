@@ -1,26 +1,28 @@
 import React, { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
+import { useActions } from '../hooks/useActions'
 import './Card.scss'
-import { setFlipedCards, setTempCards } from '../store/reducers/appReducer'
 
 const Card = ({ card }) => {
-  const dispatch = useDispatch()
-  const { flipedCards, tempCards } = useSelector((state) => state.app)
-  const [fliped, setFliped] = useState(false)
+  const { beginGame, flipedCards } = useSelector((state) => state.app)
+  const { flipCard } = useActions()
+  const [fliped, setFliped] = useState(!beginGame)
 
-  const handlerClick = (index) => {
+  const handlerClick = (cardIdx) => {
     if (fliped) return
-    dispatch(setTempCards([...tempCards, index]))
-    dispatch(setFlipedCards([...flipedCards, index]))
+
+    flipCard(cardIdx)
   }
 
   useEffect(() => {
+    if (!beginGame) return
+
     if (flipedCards.includes(card.index)) {
       setFliped(true)
     } else {
       setFliped(false)
     }
-  }, [flipedCards])
+  }, [beginGame, flipedCards])
 
   return (
     <div

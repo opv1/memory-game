@@ -1,4 +1,12 @@
-import { SET_DISPLAYED_CARDS, SET_FLIPED_CARDS, SET_TEMP_CARDS } from '../types'
+import {
+  SET_BEGIN_GAME,
+  SET_END_GAME,
+  SET_MESSAGE,
+  SET_TIMER,
+  SET_DISPLAYED_CARDS,
+  SET_FLIPED_CARDS,
+  SET_TEMP_CARDS,
+} from '../types'
 
 const initialState = {
   icons: [
@@ -21,6 +29,10 @@ const initialState = {
     { id: 17, className: 'fas fa-record-vinyl' },
     { id: 18, className: 'fas fa-play' },
   ],
+  beginGame: false,
+  endGame: false,
+  message: '',
+  timer: 300,
   displayedCards: [],
   flipedCards: [],
   tempCards: [],
@@ -28,6 +40,26 @@ const initialState = {
 
 export const appReducer = (state = initialState, action) => {
   switch (action.type) {
+    case SET_BEGIN_GAME:
+      return {
+        ...state,
+        beginGame: !state.beginGame,
+      }
+    case SET_END_GAME:
+      return {
+        ...state,
+        endGame: !state.endGame,
+      }
+    case SET_MESSAGE:
+      return {
+        ...state,
+        message: action.payload,
+      }
+    case SET_TIMER:
+      return {
+        ...state,
+        timer: action.payload,
+      }
     case SET_DISPLAYED_CARDS:
       return {
         ...state,
@@ -47,6 +79,24 @@ export const appReducer = (state = initialState, action) => {
       return state
   }
 }
+
+export const setBeginGame = () => ({
+  type: SET_BEGIN_GAME,
+})
+
+export const setEndGame = () => ({
+  type: SET_END_GAME,
+})
+
+export const setMessage = (message) => ({
+  type: SET_MESSAGE,
+  payload: message,
+})
+
+export const setTimer = (timer) => ({
+  type: SET_TIMER,
+  payload: timer,
+})
 
 export const setDisplayedCards = (cards) => ({
   type: SET_DISPLAYED_CARDS,

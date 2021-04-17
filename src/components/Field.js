@@ -1,50 +1,51 @@
-import React, { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import Card from './Card'
-import { shuffleArray } from '../utils/shuffleArray'
-import './Field.scss'
+import React, { useEffect } from 'react'
+import { useSelector } from 'react-redux'
+import { useActions } from '../hooks/useActions'
 import Timer from './Timer'
-import {
-  setDisplayedCards,
-  setFlipedCards,
-  setTempCards,
-} from '../store/reducers/appReducer'
+import Card from './Card'
+import './Field.scss'
 
 const Field = () => {
-  const dispatch = useDispatch()
-  const { icons, displayedCards, flipedCards, tempCards } = useSelector(
+  const { displayedCards, flipedCards, tempCards } = useSelector(
     (state) => state.app
   )
+  const {
+    initCards,
+    overGame,
+    resetTempCards,
+    spliceFlipedCards,
+  } = useActions()
+
+  useEffect(() => initCards(), [])
 
   useEffect(() => {
-    const iconsArray = [...icons, ...icons]
-    const randomArray = shuffleArray(iconsArray)
+    if (tempCards.length === 1) {
+      const timeout = setTimeout(() => spliceFlipedCards(), 5000)
 
-    dispatch(setDisplayedCards(randomArray))
-  }, [])
+      return () => clearTimeout(timeout)
+    }
 
-  useEffect(() => {
     if (tempCards.length === 2) {
       const firstChoose = tempCards[0]
       const secondChoose = tempCards[1]
 
       if (displayedCards[firstChoose].id !== displayedCards[secondChoose].id) {
-        setTimeout(() => {
-          const cards = flipedCards.filter((card) => {
-            return tempCards.indexOf(card) === -1
-          })
+        const timeout = setTimeout(() => spliceFlipedCards(), 500)
 
-          dispatch(setTempCards([]))
-          dispatch(setFlipedCards(cards))
-        }, 500)
+        return () => clearTimeout(timeout)
       } else {
-        dispatch(setTempCards([]))
+        if (flipedCards.length === displayedCards.length) {
+          overGame('You won!')
+        }
+
+        resetTempCards()
       }
     }
   }, [flipedCards])
 
   return (
     <div className='field'>
+      <Timer />
       <div className='field__block'>
         {displayedCards.map((card, index) => (
           <Card key={index} card={{ index, ...card }} />

@@ -6,8 +6,9 @@ export const shuffleArray = (array) => {
   const result = []
 
   while (array.length > 0) {
-    let randomInit = getRandomInit(0, array.length - 1)
-    let element = array.splice(randomInit, 1)[0]
+    let random = getRandomInit(0, array.length - 1)
+    let element = array.splice(random, 1)[0]
+
     result.push(element)
   }
 
