@@ -7,7 +7,7 @@
 
 Stack: React
 
-## [See the project]()
+## [See the project](https://opv1.github.io/memory-game)
 
 ## Setup
 
