@@ -37,7 +37,7 @@ const Card = ({ card }) => {
       className={fliped ? 'card card_flip' : 'card'}
       onClick={() => handlerClick(card.index)}
     >
-      <div className='card__front'>{card.id}</div>
+      <div className='card__front'>???</div>
       <div className='card__back'>
         <i className={card.className} />
       </div>
