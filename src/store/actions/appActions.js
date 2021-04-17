@@ -7,6 +7,7 @@ import {
   setDisplayedCards,
   setFlipedCards,
   setTempCards,
+  setCounter,
 } from '../reducers/appReducer'
 import { shuffleArray } from '../../utils/shuffleArray'
 
@@ -23,13 +24,15 @@ export const startGame = () => (dispatch) => {
   dispatch(setBeginGame())
 }
 
-export const overGame = (message) => (dispatch) => {
-  dispatch(setEndGame())
-  dispatch(setMessage(message))
+export const finalCountdown = (timer) => (dispatch) => {
+  dispatch(setTimer(timer))
 }
 
-export const resetTempCards = () => (dispatch) => {
-  dispatch(setTempCards([]))
+export const flipCard = (cardIdx) => (dispatch) => {
+  const { flipedCards, tempCards } = store.getState().app
+
+  dispatch(setFlipedCards([...flipedCards, cardIdx]))
+  dispatch(setTempCards([...tempCards, cardIdx]))
 }
 
 export const spliceFlipedCards = () => (dispatch) => {
@@ -43,6 +46,27 @@ export const spliceFlipedCards = () => (dispatch) => {
   dispatch(setTempCards([]))
 }
 
+export const resetTempCards = () => (dispatch) => {
+  dispatch(setTempCards([]))
+}
+
+export const overGame = (message) => (dispatch) => {
+  const { counter } = store.getState().app
+
+  if (message.includes('won')) {
+    const obj = { ...counter, victories: counter.victories + 1 }
+    dispatch(setCounter(obj))
+  }
+
+  if (message.includes('lose')) {
+    const obj = { ...counter, defeats: counter.defeats + 1 }
+    dispatch(setCounter(obj))
+  }
+
+  dispatch(setEndGame())
+  dispatch(setMessage(message))
+}
+
 export const resetGame = () => (dispatch) => {
   const { icons } = store.getState().app
 
@@ -52,17 +76,8 @@ export const resetGame = () => (dispatch) => {
   dispatch(setBeginGame())
   dispatch(setEndGame())
   dispatch(setMessage(''))
-  dispatch(setTimer(10))
+  dispatch(setTimer(180))
   dispatch(setDisplayedCards(randomArray))
-}
-
-export const flipCard = (cardIdx) => (dispatch) => {
-  const { flipedCards, tempCards } = store.getState().app
-
-  dispatch(setFlipedCards([...flipedCards, cardIdx]))
-  dispatch(setTempCards([...tempCards, cardIdx]))
-}
-
-export const finalCountdown = (timer) => (dispatch) => {
-  dispatch(setTimer(timer))
+  dispatch(setFlipedCards([]))
+  dispatch(setTempCards([]))
 }

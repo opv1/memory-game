@@ -5,12 +5,11 @@ import './Card.scss'
 
 const Card = ({ card }) => {
   const { beginGame, flipedCards } = useSelector((state) => state.app)
+  const [fliped, setFliped] = useState(true)
   const { flipCard } = useActions()
-  const [fliped, setFliped] = useState(!beginGame)
 
   const handlerClick = (cardIdx) => {
     if (fliped) return
-
     flipCard(cardIdx)
   }
 
@@ -22,7 +21,16 @@ const Card = ({ card }) => {
     } else {
       setFliped(false)
     }
+    // eslint-disable-next-line
   }, [beginGame, flipedCards])
+
+  useEffect(() => {
+    if (beginGame) {
+      setFliped(false)
+    } else {
+      setFliped(true)
+    }
+  }, [beginGame])
 
   return (
     <div
@@ -31,7 +39,7 @@ const Card = ({ card }) => {
     >
       <div className='card__front'>{card.id}</div>
       <div className='card__back'>
-        <i className={card.className}></i>
+        <i className={card.className} />
       </div>
     </div>
   )

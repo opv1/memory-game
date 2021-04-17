@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin: 1rem;
 
   &__time {
     margin-bottom: 1rem;
@@ -19,6 +20,10 @@
 
     &:hover {
       background: darken(#e21a1a, 5%);
+    }
+
+    &:disabled {
+      background: #919191;
     }
   }
 }

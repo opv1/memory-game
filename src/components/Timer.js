@@ -18,17 +18,23 @@ const Timer = () => {
         finalCountdown(timer - 1)
       } else {
         overGame('You lose!')
-        clearInterval(interval)
       }
+
+      return clearInterval(interval)
     }, 1000)
 
     return () => clearInterval(interval)
+    // eslint-disable-next-line
   }, [beginGame, endGame, timer])
 
   return (
     <div className='timer'>
       <span className='timer__time'>{`${time.min}:${time.sec}`}</span>
-      <button className='timer__button' onClick={startGame}>
+      <button
+        className='timer__button'
+        onClick={startGame}
+        disabled={beginGame}
+      >
         {beginGame ? 'Go!' : 'Start'}
       </button>
     </div>

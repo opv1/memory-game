@@ -1,14 +1,16 @@
 .field {
-  display: flex;
-  flex-direction: column;
+  display: grid;
   align-items: center;
-  margin: 1rem 0;
-  width: 90%;
+  justify-content: center;
+  justify-items: center;
+  grid-gap: 1rem;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+  width: 100%;
+}
 
-  &__block {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    margin-top: 1rem;
+@media screen and(max-width: 1024px) {
+  .field {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 150px));
   }
 }

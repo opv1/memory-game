@@ -6,6 +6,7 @@ import {
   SET_DISPLAYED_CARDS,
   SET_FLIPED_CARDS,
   SET_TEMP_CARDS,
+  SET_COUNTER,
 } from '../types'
 
 const initialState = {
@@ -32,10 +33,11 @@ const initialState = {
   beginGame: false,
   endGame: false,
   message: '',
-  timer: 300,
+  timer: 180,
   displayedCards: [],
   flipedCards: [],
   tempCards: [],
+  counter: { victories: 0, defeats: 0 },
 }
 
 export const appReducer = (state = initialState, action) => {
@@ -75,6 +77,11 @@ export const appReducer = (state = initialState, action) => {
         ...state,
         tempCards: action.payload,
       }
+    case SET_COUNTER:
+      return {
+        ...state,
+        counter: action.payload,
+      }
     default:
       return state
   }
@@ -111,4 +118,9 @@ export const setFlipedCards = (cards) => ({
 export const setTempCards = (cards) => ({
   type: SET_TEMP_CARDS,
   payload: cards,
+})
+
+export const setCounter = (counter) => ({
+  type: SET_COUNTER,
+  payload: counter,
 })
