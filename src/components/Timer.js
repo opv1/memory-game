@@ -35,7 +35,7 @@ const Timer = () => {
         onClick={startGame}
         disabled={beginGame}
       >
-        {beginGame ? 'Go!' : 'Start'}
+        {beginGame ? 'Hurry up!' : 'Start'}
       </button>
     </div>
   )

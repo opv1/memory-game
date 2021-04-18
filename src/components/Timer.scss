@@ -2,11 +2,11 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 1rem;
 
   &__time {
     margin-bottom: 1rem;
-    font-size: 3rem;
+    font-size: 3.5rem;
+    color: #13334c;
   }
 
   &__button {
@@ -15,11 +15,12 @@
     border-radius: 10px;
     padding: 1rem;
     color: #fff;
-    background: #e21a1a;
+    background: #13334c;
+    transition: background 0.1s;
     cursor: pointer;
 
     &:hover {
-      background: darken(#e21a1a, 5%);
+      background: darken(#13334c, 5%);
     }
 
     &:disabled {

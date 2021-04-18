@@ -4,13 +4,9 @@
   align-items: center;
   justify-content: center;
   margin: auto;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
   width: 90%;
   min-width: 320px;
   max-width: 1440px;
-
-  &__block {
-    display: flex;
-    align-items: center;
-    margin: 1rem;
-  }
 }
