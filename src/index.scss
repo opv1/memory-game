@@ -1,5 +1,9 @@
 @import '~normalize.css';
 
+* {
+  box-sizing: border-box;
+}
+
 body {
   font-family: 'Roboto Mono', 'Arial', 'Helvetica', sans-serif;
   background: #f6f6e9;

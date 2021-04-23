@@ -7,7 +7,7 @@ import {
   SET_FLIPED_CARDS,
   SET_TEMP_CARDS,
   SET_COUNTER,
-} from '../types'
+} from 'store/types'
 
 const initialState = {
   icons: [

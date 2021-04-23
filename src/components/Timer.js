@@ -1,14 +1,14 @@
 import React, { useEffect } from 'react'
 import { useSelector } from 'react-redux'
-import { useActions } from '../hooks/useActions'
-import { setTime } from '../utils/setTime'
-import './Timer.scss'
+import { useActions } from 'hooks/useActions'
+import { getTime } from 'utils/getTime'
+import 'components/Timer.scss'
 
 const Timer = () => {
   const { beginGame, endGame, timer } = useSelector((state) => state.app)
   const { startGame, overGame, finalCountdown } = useActions()
 
-  const time = setTime(timer)
+  const time = getTime(timer)
 
   useEffect(() => {
     if (!beginGame || endGame) return

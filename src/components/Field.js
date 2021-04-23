@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react'
 import { useSelector } from 'react-redux'
-import { useActions } from '../hooks/useActions'
-import Card from './Card'
-import './Field.scss'
+import { useActions } from 'hooks/useActions'
+import Card from 'components/Card'
+import 'components/Field.scss'
 
 const Field = () => {
   const { displayedCards, flipedCards, tempCards } = useSelector(

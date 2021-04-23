@@ -1,4 +1,4 @@
-import { store } from '../index'
+import { store } from 'store/index'
 import {
   setBeginGame,
   setEndGame,
@@ -8,8 +8,8 @@ import {
   setFlipedCards,
   setTempCards,
   setCounter,
-} from '../reducers/appReducer'
-import { shuffleArray } from '../../utils/shuffleArray'
+} from 'store/reducers/appReducer'
+import { shuffleArray } from 'utils/shuffleArray'
 
 export const initCards = () => (dispatch) => {
   const { icons } = store.getState().app

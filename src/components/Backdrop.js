@@ -1,7 +1,7 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
-import { useActions } from '../hooks/useActions'
-import './Backdrop.scss'
+import { useActions } from 'hooks/useActions'
+import 'components/Backdrop.scss'
 
 const Backdrop = () => {
   const { message } = useSelector((state) => state.app)

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
-import { useActions } from '../hooks/useActions'
-import './Card.scss'
+import { useActions } from 'hooks/useActions'
+import 'components/Card.scss'
 
 const Card = ({ card }) => {
   const { beginGame, flipedCards } = useSelector((state) => state.app)
