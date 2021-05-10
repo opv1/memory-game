@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { useActions } from 'hooks/useActions'
 import { getTime } from 'utils/getTime'
-import 'components/Timer.scss'
+import 'components/Timer/Timer.scss'
 
 const Timer = () => {
   const { beginGame, endGame, timer } = useSelector((state) => state.app)

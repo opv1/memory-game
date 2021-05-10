@@ -1,8 +1,8 @@
 import { useSelector } from 'react-redux'
-import Timer from 'components/Timer'
-import Statistics from 'components/Statistics'
-import Field from 'components/Field'
-import Backdrop from 'components/Backdrop'
+import Timer from 'components/Timer/Timer'
+import Statistics from 'components/Statistics/Statistics'
+import Field from 'components/Field/Field'
+import Backdrop from 'components/Backdrop/Backdrop'
 import 'App.scss'
 
 const App = () => {

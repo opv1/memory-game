@@ -1,6 +1,6 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
-import 'components/Statistics.scss'
+import 'components/Statistics/Statistics.scss'
 
 const Statistics = () => {
   const { counter } = useSelector((state) => state.app)
