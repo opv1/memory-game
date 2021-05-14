@@ -6,11 +6,12 @@
   grid-gap: 1rem;
   grid-template-columns: repeat(6, 1fr);
   grid-template-rows: repeat(6, 1fr);
+  padding: 0 0.5rem;
   width: 100%;
 }
 
 @media screen and(max-width: 1024px) {
   .field {
-    grid-template-columns: repeat(auto-fill, minmax(150px, 150px));
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
   }
 }
